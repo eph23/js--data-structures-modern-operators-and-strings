@@ -57,50 +57,47 @@ const restaurant = {
   },
 };
 
-//  Sets
-/* NOTE: A Set is a collection of unique values in JavaScript. It is an object type that lets you store unique values of any type, whether primitive values or object references. Unlike arrays, a Set does not allow duplicate values.
- */
+//  Sets Operations
 
-const ordersSet = new Set([
-  'Pasta',
-  'Pizza',
-  'Pizza',
-  'Risotto',
-  'Pasta',
-  'Pizza',
+const italianFoods = new Set([
+  'pasta',
+  'gnocchi',
+  'tomatoes',
+  'olive oli',
+  'garlic',
+  'basil',
 ]);
-console.log(ordersSet);
 
-//Size of the set
-console.log(ordersSet.size);
+const mexicanFoods = new Set([
+  'tortillas',
+  'beans',
+  'rice',
+  'tomatoes',
+  'avocado',
+  'garlic',
+]);
 
-// Checking for a value
-console.log(ordersSet.has('Pizza'));
-console.log(ordersSet.has('Bread'));
+// Intersection
+const commonFoods = italianFoods.intersection(mexicanFoods);
+// const commonFoods = [...new Set(italianFoods.intersection(mexicanFoods))];
+console.log('Intersection', commonFoods);
+console.log([...commonFoods]);
 
-// Adding Values
-ordersSet.add('Garlic Bread');
-ordersSet.add('Garlic Bread');
-console.log(ordersSet);
+// Union
+const italianMexicanFusion = italianFoods.union(mexicanFoods);
+console.log('Union', italianMexicanFusion);
+console.log([...italianMexicanFusion]);
 
-// Removing Value
-ordersSet.delete('Risotto');
-console.log(ordersSet);
+// Difference
+const uniqueItalianFoods = italianFoods.difference(mexicanFoods);
+console.log('Difference between Italian and Mexican', uniqueItalianFoods);
 
-// Clearing the Set
-// ordersSet.clear();
-console.log(ordersSet);
+const uniqueMexicanFoods = mexicanFoods.difference(italianFoods);
+console.log('Difference between Mexican and Italian', uniqueMexicanFoods);
 
-// Looping Sets
-for (const order of ordersSet) {
-  console.log(order);
-}
+// Symmetric
 
-// Example
-const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
+const uniqueItalianAndMexicanFoods =
+  italianFoods.symmetricDifference(mexicanFoods);
 
-const staffUnique = [...new Set(staff)];
-console.log(staffUnique);
-console.log(
-  new Set(['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter']).size
-);
+console.log(uniqueItalianAndMexicanFoods);
